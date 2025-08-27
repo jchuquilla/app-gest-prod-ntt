@@ -2,6 +2,12 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
 
+## Install dependencies
+To deploy the project correctly, run it from the root directory to download all the necessary dependencies.
+```bash
+npm install
+```
+
 ## Development server
 
 To start a local development server, run:
@@ -44,12 +50,10 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
+## Running unit tests with coverage report
+To execute unit tests with coverage, use the following command:
 ```bash
-ng e2e
+ng test --no-watch --code-coverage
 ```
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
