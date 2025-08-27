@@ -1,6 +1,6 @@
 # AppGestProdNtt
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15 and node v20.12.0.
 
 ## Install dependencies
 To deploy the project correctly, run it from the root directory to download all the necessary dependencies.
