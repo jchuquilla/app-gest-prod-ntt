@@ -1,0 +1,217 @@
+:host {
+  --header-height: 50px;
+  --row-height: 60px;
+  --border-color: #e5e7eb;
+  --header-bg: #f8fafc;
+  --alt-row-bg: #fafafa;
+  --text-color: #111827;
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-color);
+  display: block;
+}
+
+.table-container {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+  margin: 5%;
+  padding: 2%;
+  justify-content: left;
+}
+
+/* Wrapper scrollable */
+.table-wrapper {
+  overflow: auto;
+  block-size: calc(var(--header-height) + var(--row-height) * 5);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+
+/* Tabla */
+.custom-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  inline-size: max(900px, 100%);
+}
+
+/* Encabezado sticky */
+.custom-table thead th {
+  position: sticky;
+  inset-block-start: 0;
+  background: var(--header-bg);
+  border-block-end: 1px solid var(--border-color);
+  font-weight: 600;
+  text-align: left;
+  padding: 0 12px;
+  block-size: var(--header-height);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Celdas del cuerpo */
+.custom-table tbody td {
+  padding: 0 12px;
+  border-block-end: 1px solid var(--border-color);
+  block-size: var(--row-height);
+  vertical-align: middle;
+  text-align: left;
+}
+
+/* Filas alternas */
+.custom-table tbody tr:nth-child(2n) td {
+  background: var(--alt-row-bg);
+}
+
+/* Logo circular */
+.logo {
+  inline-size: 40px;
+  block-size: 40px;
+  background: #d1d5db;
+  color: #4b5563;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* Iconos de info */
+.info-icon {
+  display: inline-block;
+  background: #d1d5db;
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: bold;
+  inline-size: 16px;
+  block-size: 16px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 16px;
+  margin-inline-start: 4px;
+  cursor: pointer;
+}
+
+/* Footer con selector */
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: white;
+  border-block-start: 1px solid var(--border-color);
+}
+
+.table-footer select {
+  padding: 4px 6px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.menu{
+  position:absolute;
+  top:10px;
+  right:10px
+}
+
+.menu-btn{
+  background:transparent;
+  border:1px solid var(--border);
+  border-radius:10px;
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  color:var(--muted)
+}
+.menu-dropdown{
+  position:absolute;
+  top:46px;
+  right:0;
+  background:#0b0d12;
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+  min-width:160px;
+  z-index:10
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.menu-contextual {
+  position: fixed;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  border-radius: 4px;
+  width: 160px;
+}
+
+.menu-contextual ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-contextual li {
+  padding: 10px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.menu-contextual li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Skeleton base */
+.skeleton {
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Tamaños específicos */
+.skeleton-logo {
+  inline-size: 40px;
+  block-size: 40px;
+}
+
+.skeleton-text {
+  block-size: 16px;
+  inline-size: 100%;
+}
+
+.skeleton-btn {
+  inline-size: 24px;
+  block-size: 24px;
+  border-radius: 50%;
+}
+
+/* Animación */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

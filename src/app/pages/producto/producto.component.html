@@ -1,0 +1,75 @@
+<div class="table-container">
+
+  <div class="table-header">
+    <input type="text" placeholder="Buscar producto..." [(ngModel)]="searchText" (input)="onInput($event)"/>
+    <button class="btn-agregar" type="button" [routerLink]="['new']">Agregar</button>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="custom-table">
+      <thead>
+      <tr>
+        <th>Logo</th>
+        <th>Nombre del producto</th>
+        <th>Descripción <span class="info-icon">i</span></th>
+        <th>Fecha de liberación <span class="info-icon">i</span></th>
+        <th>Fecha de reestructuración <span class="info-icon">i</span></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody *ngIf="!isLoading; else skeleton">
+      <tr *ngFor="let p of filteredProducts">
+        <td>
+          <div class="logo">{{ p.logo }}</div>
+        </td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.description }}</td>
+        <td>{{ p.date_release | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ p.date_revision | date: 'dd/MM/yyyy' }}</td>
+        <td class="menu-cell">
+          <button class="menu-btn" (click)="abrirMenu(p, $event)">⋮</button>
+        </td>
+      </tr>
+      </tbody>
+
+      <ng-template #skeleton>
+        <tbody>
+        <tr *ngFor="let _ of skeletonRows">
+          <td><div class="skeleton skeleton-logo"></div></td>
+          <td><div class="skeleton skeleton-text"></div></td>
+          <td><div class="skeleton skeleton-text"></div></td>
+          <td><div class="skeleton skeleton-text"></div></td>
+          <td><div class="skeleton skeleton-text"></div></td>
+          <td><div class="skeleton skeleton-btn"></div></td>
+        </tr>
+        </tbody>
+      </ng-template>
+
+
+    </table>
+    <div
+      class="menu-contextual"
+      *ngIf="menuVisible"
+      [style.top.px]="menuY"
+      [style.left.px]="menuX"
+    >
+      <ul>
+        <li (click)="editar(productoSeleccionado)">Editar</li>
+        <li (click)="abrirModal(productoSeleccionado)">Eliminar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="table-footer">
+    <span>{{ rowsPerPage }} Resultados</span>
+    <select [(ngModel)]="rowsPerPage" (change)="onItemsPerPageChange()">
+      <option *ngFor="let n of [5,10,15,20]" [value]="n">{{n}}</option>
+    </select>
+  </div>
+</div>
+<app-confirm-dialog
+  *ngIf="mostrarModal"
+  [tituloProducto]="productoSeleccionado.name"
+  (confirmar)="eliminarProducto()"
+  (cancelar)="cerrarModal()"
+></app-confirm-dialog>

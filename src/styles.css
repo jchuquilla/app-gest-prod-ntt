@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --bg:#0e0f13;
+  --card:#151822;
+  --muted:#9aa4b2;
+  --text:#e6e8ee;
+  --primary:#3a86ff;
+  --danger:#ef476f;
+  --success:#06d6a0;
+  --border:#252a38;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.btn-agregar {
+  background-color: #FFD600;
+  color: #0D1F3C;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-agregar:hover {
+  background-color: #FFCA00;
+  transform: scale(1.02);
+}
+
+.btn-agregar:active {
+  background-color: #F5B800;
+  transform: scale(0.98);
+}

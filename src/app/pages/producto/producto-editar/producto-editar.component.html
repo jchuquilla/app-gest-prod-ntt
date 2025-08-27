@@ -1,0 +1,84 @@
+<!-- registro-form.component.html -->
+<div class="form-container">
+  <h2 class="form-title">Formulario de Registro</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
+    <div class="form-field">
+      <label for="id">ID</label>
+      <input id="id" formControlName="id" />
+      <div class="error-text" *ngIf="form.controls['id'].errors?.['required'] && form.controls['id'].touched">
+        Requerido.
+      </div>
+      <div class="error-text" *ngIf="form.controls['id'].errors?.['minlength'] && form.controls['id'].touched">
+        Debe ingresar min. 3 caracteres.
+      </div>
+      <div class="error-text" *ngIf="form.controls['id'].errors?.['maxlength'] && form.controls['id'].touched">
+        Debe ingresar max. 10 caracteres.
+      </div>
+      <div class="error-text" *ngIf="form.controls['id'].errors?.['idExists'] && form.controls['id'].touched && !isEdit">
+        Este ID ya está registrado.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" formControlName="nombre" />
+      <div class="error-text" *ngIf="form.controls['nombre'].errors?.['required'] && form.controls['nombre'].touched">
+        Requerido.
+      </div>
+      <div class="error-text" *ngIf="form.controls['nombre'].errors?.['minlength'] && form.controls['nombre'].touched">
+        Debe ingresar min. 5 caracteres.
+      </div>
+      <div class="error-text" *ngIf="form.controls['nombre'].errors?.['maxlength'] && form.controls['nombre'].touched">
+        Debe ingresar max. 100 caracteres.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="descripcion">Descripción</label>
+      <input id="descripcion" formControlName="descripcion" />
+      <div class="error-text" *ngIf="form.controls['descripcion'].errors?.['required'] && form.controls['descripcion'].touched">
+        Requerido.
+      </div>
+      <div class="error-text" *ngIf="form.controls['descripcion'].errors?.['minlength'] && form.controls['descripcion'].touched">
+        Debe ingresar min. 10 caracteres.
+      </div>
+      <div class="error-text" *ngIf="form.controls['descripcion'].errors?.['maxlength'] && form.controls['descripcion'].touched">
+        Debe ingresar max. 200 caracteres.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="logo">Logo</label>
+      <input id="logo" formControlName="logo" />
+      <div class="error-text" *ngIf="form.controls['logo'].errors?.['required'] && form.controls['logo'].touched">
+        Requerido.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="fechaLiberacion">Fecha de Liberación</label>
+      <input type="date" id="fechaLiberacion" formControlName="fechaLiberacion" [min]="hoy"/>
+      <div class="error-text" *ngIf="form.controls['fechaLiberacion'].errors?.['required'] && form.controls['fechaLiberacion'].touched">
+        Requerido.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="fechaRevision">Fecha de Revisión</label>
+      <input type="date" id="fechaRevision" formControlName="fechaRevision" [min]="hoy"/>
+      <div class="error-text" *ngIf="form.errors?.['required'] && form.get('fechaRevision')?.touched">
+        Requerido.
+      </div>
+      <div class="error-text" *ngIf="form.errors?.['revisionIncorrecta'] && form.get('fechaRevision')?.touched">
+        La fecha de revisión debe ser exactamente un año después de la liberación.
+      </div>
+
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-gray" (click)="onReset()">Reiniciar</button>
+      <button type="submit" class="btn-yellow">Enviar</button>
+    </div>
+  </form>
+</div>
